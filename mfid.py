@@ -31,7 +31,7 @@ def uuid_to_cb32(u):
     return cb32
 
 
-def cb32_uuid4():
+def cb32_uuid4(*args, **kwargs):
     """
     Creates a 26 character encoded string based on lowercase
     Crockford's Base32 (cb32) encoding of the uuid.bytes (UUIDv7) 
@@ -41,7 +41,7 @@ def cb32_uuid4():
     
     returns cb32 string and UUIDv4 object
     """
-    u = uuid.uuid4()
+    u = uuid.uuid4(*args, **kwargs)
     cb32 = uuid_to_cb32(u)
     return cb32,u
 
@@ -63,7 +63,7 @@ def cb32_uuid7(*args, **kwargs):
     cb32 = uuid_to_cb32(u)
     return cb32,u
 
-def cb32_uuid():
+def mfid(*args, **kwargs):
     """
     Creates a 26 character encoded string based on lowercase
     Crockford's Base32 encoding of a UUID. 
@@ -73,9 +73,11 @@ def cb32_uuid():
     returns cb32 string and UUID object
     """    
     try:
-        return cb32_uuid7()
+        return cb32_uuid7(*args, **kwargs)
     except:
-        return cb32_uuid4()
+        return cb32_uuid4(*args, **kwargs)
     
+cb32_uuid = mfid
+
 if __name__ == '__main__':
-    print(cb32_uuid())
+    print(mfid())
