@@ -1,3 +1,18 @@
+"""
+# MFID: a Mighty Fine Identifier
+
+MFID gives a standards compliant timestamp-based compact
+universally unique identifier.
+MFID is a UUIDv7 + Crockford's Base32 representation.
+
+**An example MFID: `0swqzb3a1sthv000xd8kta0vrw`**
+
+Author: Edward S. Barnard <esbarnard@lbl.gov>
+License: BSD
+URL: https://github.com/MolecularFoundry/mfid
+"""
+
+
 import uuid
 import base64 # part of standard library
 
@@ -65,12 +80,17 @@ def cb32_uuid7(*args, **kwargs):
 
 def mfid(*args, **kwargs):
     """
-    Creates a 26 character encoded string based on lowercase
+    Creates an MFID (a mighty fine identifier).
+    This is a 26 character encoded string based on lowercase
     Crockford's Base32 encoding of a UUID. 
     Uses a time sequential UUIDv7 if available,
     otherwise create a random UUIDv4
     
-    returns cb32 string and UUID object
+    returns mfid string and associated UUID object as a tuple.
+
+    example:
+    >>> mfid.mfid()
+    ('0sx3p4n631xck000vvs2ecrarc', UUID('067a3b12-a618-7ac9-8000-def227330ac3'))
     """    
     try:
         return cb32_uuid7(*args, **kwargs)

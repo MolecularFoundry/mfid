@@ -151,7 +151,6 @@ for i in range(10):
 
 ## Python implementation
 
-**Note, not yet on PyPI**
 
 ```console
 $ pip install mfid
@@ -160,6 +159,12 @@ $ pip install mfid
 ```python
 from mfid import mfid
 mfid_str, uuid_obj = mfid()
+```
+
+```pycon     
+>>> import mfid  
+>>> mfid.mfid()
+('0sx3p4n631xck000vvs2ecrarc', UUID('067a3b12-a618-7ac9-8000-def227330ac3'))
 ```
 
 The function `mfid()`creates a 26 character encoded string based on lowercase Crockford's Base32 encoding of a UUID. 
